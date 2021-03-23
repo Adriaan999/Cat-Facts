@@ -15,7 +15,6 @@ class CatFactListViewController: UITableViewController {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var catFactManager = CatFactManager()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         catFactManager.delegate = self
