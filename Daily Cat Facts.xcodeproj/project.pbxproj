@@ -115,12 +115,11 @@
 		635A497624042749000A06A6 /* Daily Cat Facts */ = {
 			isa = PBXGroup;
 			children = (
+				63AC2B912612384400FC9148 /* Reusable  */,
 				63B64F3C261202FF008C61DB /* Cat Fact Service */,
-				63B64F282611F48A008C61DB /* Network Manager */,
-				63B64F1F2611EFBD008C61DB /* Extension */,
+				635A49AA2404287C000A06A6 /* Model */,
 				63EBFEC624054C5800D35F50 /* ViewController */,
 				63EBFEC524054C4300D35F50 /* View */,
-				635A49AA2404287C000A06A6 /* Model */,
 				635A49832404274B000A06A6 /* Assets.xcassets */,
 				635A49852404274B000A06A6 /* LaunchScreen.storyboard */,
 				635A497724042749000A06A6 /* AppDelegate.swift */,
@@ -154,6 +153,15 @@
 				635A498024042749000A06A6 /* Daily_Cat_Facts.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63AC2B912612384400FC9148 /* Reusable  */ = {
+			isa = PBXGroup;
+			children = (
+				63B64F282611F48A008C61DB /* Network Manager */,
+				63B64F1F2611EFBD008C61DB /* Extension */,
+			);
+			path = "Reusable ";
 			sourceTree = "<group>";
 		};
 		63B64F1F2611EFBD008C61DB /* Extension */ = {
