@@ -21,7 +21,8 @@ class NetworkManager {
                 if let error = error {
                     return failureBlock(error)
                 }
-                guard let responseData = data else { return }
+                guard let responseData = data else {
+                    return failureBlock(error!) }
                 return successBlock(responseData)
             }
             task.resume()

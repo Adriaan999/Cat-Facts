@@ -28,7 +28,7 @@ class CatFactViewModel {
                 self.delegate.didFetchFacts(withFact: facts)
             }
         } failure: { (error) in
-            print("error fetching facts")
+            print(error.localizedDescription)
         }
 
     }

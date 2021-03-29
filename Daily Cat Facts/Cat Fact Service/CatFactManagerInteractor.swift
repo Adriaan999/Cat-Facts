@@ -26,7 +26,7 @@ class CatFactManagerInteractor: CatFactManagerBoundary {
             }
             success(catFacts)
         }, failureBlock: { (error) in
-            print(error.localizedDescription)
+            failure(error)
             return
         })
     }
