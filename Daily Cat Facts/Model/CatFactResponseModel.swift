@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct CatFactResponseModel {
-    private(set) var fact: String?
-    init(dictionary: [AnyHashable : Any]) {
-        if let factText = dictionary["text"] as? String {
-            self.fact = factText
-        }
+struct CatFactResponseModel: Decodable {
+    var factID: String
+    var catFact: String
+    
+    enum CodingKeys: String, CodingKey {
+        case factID = "_id"
+        case catFact = "text"
     }
 }
-

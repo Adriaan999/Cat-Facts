@@ -14,7 +14,7 @@ protocol CatFactManagerDelegate {
 
 class CatFactManager {
     var delegate: CatFactManagerDelegate?
-    private let catFactURL = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=500"
+    private let catFactURL = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=10"
     
     func performRequest() {
         if let url = URL(string: catFactURL) {
@@ -35,19 +35,13 @@ class CatFactManager {
     }
 
     func parseJSON(_ catFactData: Data) -> [CatFactResponseModel]? {
+        let decoder = JSONDecoder()
         do {
-            let json = try JSONSerialization.jsonObject(with: catFactData,
-                                                        options: .mutableContainers)
-            if let catFactLitst = json as? [[String: Any]] {
-                var catFacts = [CatFactResponseModel]()
-                for fact in catFactLitst {
-                    catFacts.append(CatFactResponseModel(dictionary: fact))
-                }
-                return catFacts
-            }
+            let decodedData = try decoder.decode([CatFactResponseModel].self, from: catFactData)
+            return decodedData
         } catch {
             print(error)
+            return nil
         }
-        return nil
     }
 }

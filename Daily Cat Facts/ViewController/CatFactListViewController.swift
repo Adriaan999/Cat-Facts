@@ -63,9 +63,9 @@ class CatFactListViewController: UITableViewController {
 }
 extension CatFactListViewController: CatFactManagerDelegate {
     func saveCatFacts(_ CatFactManager: CatFactManager, catFacts: [CatFactResponseModel]) {
-        for catFact in catFacts {
+        for fact in catFacts {
             let newFacts = CatFact(context: self.context)
-            newFacts.fact = catFact.fact
+            newFacts.fact = fact.catFact
         }
         do {
             try context.save()
