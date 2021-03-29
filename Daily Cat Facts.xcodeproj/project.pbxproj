@@ -15,10 +15,12 @@
 		635A49872404274B000A06A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635A49852404274B000A06A6 /* LaunchScreen.storyboard */; };
 		635A49922404274B000A06A6 /* Daily_Cat_FactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A49912404274B000A06A6 /* Daily_Cat_FactsTests.swift */; };
 		635A499D2404274B000A06A6 /* Daily_Cat_FactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A499C2404274B000A06A6 /* Daily_Cat_FactsUITests.swift */; };
-		635A49AC24042891000A06A6 /* CatFactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A49AB24042891000A06A6 /* CatFactManager.swift */; };
+		635A49AC24042891000A06A6 /* CatFactManagerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A49AB24042891000A06A6 /* CatFactManagerInteractor.swift */; };
 		635A49AE240428F5000A06A6 /* CatFactResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */; };
 		63B64F212611F0BD008C61DB /* Data+Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B64F202611F0BD008C61DB /* Data+Decoding.swift */; };
 		63B64F2A2611F4AA008C61DB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B64F292611F4AA008C61DB /* NetworkManager.swift */; };
+		63B64F35261200F6008C61DB /* CatFactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B64F34261200F6008C61DB /* CatFactViewModel.swift */; };
+		63B64F3E26120332008C61DB /* CatFactManagerBoundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B64F3D26120332008C61DB /* CatFactManagerBoundary.swift */; };
 		63EBFEB824050CA600D35F50 /* CatFactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFEB724050CA600D35F50 /* CatFactListViewController.swift */; };
 		63EBFEBC24053FC900D35F50 /* FactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFEBB24053FC900D35F50 /* FactTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -55,10 +57,12 @@
 		635A49982404274B000A06A6 /* Daily Cat FactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily Cat FactsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		635A499C2404274B000A06A6 /* Daily_Cat_FactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_Cat_FactsUITests.swift; sourceTree = "<group>"; };
 		635A499E2404274B000A06A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		635A49AB24042891000A06A6 /* CatFactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactManager.swift; sourceTree = "<group>"; };
+		635A49AB24042891000A06A6 /* CatFactManagerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactManagerInteractor.swift; sourceTree = "<group>"; };
 		635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactResponseModel.swift; sourceTree = "<group>"; };
 		63B64F202611F0BD008C61DB /* Data+Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Decoding.swift"; sourceTree = "<group>"; };
 		63B64F292611F4AA008C61DB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		63B64F34261200F6008C61DB /* CatFactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactViewModel.swift; sourceTree = "<group>"; };
+		63B64F3D26120332008C61DB /* CatFactManagerBoundary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactManagerBoundary.swift; sourceTree = "<group>"; };
 		63EBFEB724050CA600D35F50 /* CatFactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactListViewController.swift; sourceTree = "<group>"; };
 		63EBFEBB24053FC900D35F50 /* FactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +115,7 @@
 		635A497624042749000A06A6 /* Daily Cat Facts */ = {
 			isa = PBXGroup;
 			children = (
+				63B64F3C261202FF008C61DB /* Cat Fact Service */,
 				63B64F282611F48A008C61DB /* Network Manager */,
 				63B64F1F2611EFBD008C61DB /* Extension */,
 				63EBFEC624054C5800D35F50 /* ViewController */,
@@ -147,8 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				635A498024042749000A06A6 /* Daily_Cat_Facts.xcdatamodeld */,
-				635A49AB24042891000A06A6 /* CatFactManager.swift */,
-				635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +172,16 @@
 			path = "Network Manager";
 			sourceTree = "<group>";
 		};
+		63B64F3C261202FF008C61DB /* Cat Fact Service */ = {
+			isa = PBXGroup;
+			children = (
+				635A49AB24042891000A06A6 /* CatFactManagerInteractor.swift */,
+				635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */,
+				63B64F3D26120332008C61DB /* CatFactManagerBoundary.swift */,
+			);
+			path = "Cat Fact Service";
+			sourceTree = "<group>";
+		};
 		63EBFEC524054C4300D35F50 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 			children = (
 				63EBFEB724050CA600D35F50 /* CatFactListViewController.swift */,
 				63EBFEBB24053FC900D35F50 /* FactTableViewCell.swift */,
+				63B64F34261200F6008C61DB /* CatFactViewModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -319,11 +333,13 @@
 			files = (
 				63B64F2A2611F4AA008C61DB /* NetworkManager.swift in Sources */,
 				63B64F212611F0BD008C61DB /* Data+Decoding.swift in Sources */,
+				63B64F35261200F6008C61DB /* CatFactViewModel.swift in Sources */,
 				635A49AE240428F5000A06A6 /* CatFactResponseModel.swift in Sources */,
 				63EBFEB824050CA600D35F50 /* CatFactListViewController.swift in Sources */,
+				63B64F3E26120332008C61DB /* CatFactManagerBoundary.swift in Sources */,
 				635A497824042749000A06A6 /* AppDelegate.swift in Sources */,
 				63EBFEBC24053FC900D35F50 /* FactTableViewCell.swift in Sources */,
-				635A49AC24042891000A06A6 /* CatFactManager.swift in Sources */,
+				635A49AC24042891000A06A6 /* CatFactManagerInteractor.swift in Sources */,
 				635A498224042749000A06A6 /* Daily_Cat_Facts.xcdatamodeld in Sources */,
 				635A497A24042749000A06A6 /* SceneDelegate.swift in Sources */,
 			);

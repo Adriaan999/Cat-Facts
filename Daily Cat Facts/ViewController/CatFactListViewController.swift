@@ -13,11 +13,11 @@ class CatFactListViewController: UITableViewController {
     private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     private var factDB = [CatFact]()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var catFactManager = CatFactManager()
+    private lazy var viewModel = CatFactViewModel(interactor: CatFactManagerInteractor(),
+                                                  delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        catFactManager.delegate = self
         self.loadCatFacts()
         self.navigationController?.navigationBar.topItem?.title = "Cat Facts"
     }
@@ -48,7 +48,7 @@ class CatFactListViewController: UITableViewController {
         do {
             factDB = try context.fetch(request)
             if factDB.count == 0 {
-                catFactManager.fetchCatFacts()
+                viewModel.fetchCatFacts()
                 DispatchQueue.main.async {
                     self.startLoadindAnimation()
                 }
@@ -63,9 +63,11 @@ class CatFactListViewController: UITableViewController {
         }
     }
 }
-extension CatFactListViewController: CatFactManagerDelegate {
-    func saveCatFacts(_ CatFactManager: CatFactManager, catFacts: [CatFactResponseModel]) {
-        for fact in catFacts {
+
+
+extension CatFactListViewController: CatFactViewModelDelegate {
+    func didFetchFacts(withFact catFact: [CatFactResponseModel]) {
+        for fact in catFact {
             let newFacts = CatFact(context: self.context)
             newFacts.fact = fact.catFact
         }

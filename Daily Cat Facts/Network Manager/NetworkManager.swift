@@ -13,16 +13,16 @@ typealias PerformRequestFailure = (Error) -> Void
 
 class NetworkManager {
     func performRequest(url: String,
-                        success: @escaping PerformRequestSuccess,
-                        failure: @escaping PerformRequestFailure) {
+                        successBlock: @escaping PerformRequestSuccess,
+                        failureBlock: @escaping PerformRequestFailure) {
         if let url = URL(string: url) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    return failure(error)
+                    return failureBlock(error)
                 }
                 guard let responseData = data else { return }
-                return success(responseData)
+                return successBlock(responseData)
             }
             task.resume()
         }
