@@ -8,16 +8,21 @@
 
 import Foundation
 
+typealias PerformRequestSuccess = (Data) -> Void
+typealias PerformRequestFailure = (Error) -> Void
+
 class NetworkManager {
-    func performRequest(url: String, completion: @escaping (Data?, Error?) -> Void) {
+    func performRequest(url: String,
+                        success: @escaping PerformRequestSuccess,
+                        failure: @escaping PerformRequestFailure) {
         if let url = URL(string: url) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    return completion(nil, error)
+                    return failure(error)
                 }
                 guard let responseData = data else { return }
-                return completion(responseData, nil)
+                return success(responseData)
             }
             task.resume()
         }
