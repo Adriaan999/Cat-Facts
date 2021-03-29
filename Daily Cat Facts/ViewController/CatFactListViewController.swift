@@ -48,7 +48,7 @@ class CatFactListViewController: UITableViewController {
         do {
             factDB = try context.fetch(request)
             if factDB.count == 0 {
-                catFactManager.performRequest()
+                catFactManager.fetchCatFacts()
                 DispatchQueue.main.async {
                     self.startLoadindAnimation()
                 }

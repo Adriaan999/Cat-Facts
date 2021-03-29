@@ -15,21 +15,20 @@ protocol CatFactManagerDelegate {
 class CatFactManager {
     var delegate: CatFactManagerDelegate?
     private let catFactURL = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=10"
+    private let networkManager = NetworkManager()
     
-    func performRequest() {
-        if let url = URL(string: catFactURL) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                guard let data = data,
-                      let catFacts: [CatFactResponseModel] = try? data.decoded() else {
-                    if let error = error {
-                        print(error)
-                    }
-                    return
-                }
-                self.delegate?.saveCatFacts(self, catFacts: catFacts)
+    func fetchCatFacts() {
+        networkManager.performRequest(url: catFactURL) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
             }
-            task.resume()
+            guard let data = data,
+                  let catFacts: [CatFactResponseModel] = try? data.decoded() else {
+                print("Decoding failed")
+                return
+            }
+            self.delegate?.saveCatFacts(self, catFacts: catFacts)
         }
     }
 }
