@@ -11,30 +11,30 @@ import CoreData
 
 class CatFactListViewController: UITableViewController {
     private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    private var factDB = [CatFact]()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private lazy var viewModel = CatFactViewModel(interactor: CatFactManagerInteractor(),
-                                                  delegate: self)
+                                                  delegate: self,
+                                                  context: context)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadCatFacts()
+        self.startLoadindAnimation()
+        viewModel.loadFacts()
         self.navigationController?.navigationBar.topItem?.title = "Cat Facts"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return factDB.count
+        return viewModel.factDB.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "factCell", for: indexPath) as! FactTableViewCell
-        if let item = factDB[indexPath.row].fact {
+        if let item = viewModel.factDB[indexPath.row].fact {
             cell.factLabel?.text = "Fact \(indexPath.row + 1): \(item)"
         }
         return cell
     }
     
-    //MARK: Private
     private func startLoadindAnimation() {
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -42,40 +42,14 @@ class CatFactListViewController: UITableViewController {
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
     }
-    
-    private func loadCatFacts() {
-        let request : NSFetchRequest<CatFact> = CatFact.fetchRequest()
-        do {
-            factDB = try context.fetch(request)
-            if factDB.count == 0 {
-                viewModel.fetchCatFacts()
-                DispatchQueue.main.async {
-                    self.startLoadindAnimation()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.activityIndicator.stopAnimating()
-                }
-            }
-        } catch {
-            print("Error loading fact \(error)")
-        }
-    }
 }
 
 
 extension CatFactListViewController: CatFactViewModelDelegate {
-    func didFetchFacts(withFact catFact: [CatFactResponseModel]) {
-        for fact in catFact {
-            let newFacts = CatFact(context: self.context)
-            newFacts.fact = fact.catFact
+    func didFetchFacts() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
         }
-        do {
-            try context.save()
-        } catch {
-            print("Error saving fact \(error)")
-        }
-        self.loadCatFacts()
     }
 }
