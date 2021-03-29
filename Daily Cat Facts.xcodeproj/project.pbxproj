@@ -115,7 +115,6 @@
 				635A497724042749000A06A6 /* AppDelegate.swift */,
 				635A497924042749000A06A6 /* SceneDelegate.swift */,
 				635A49882404274B000A06A6 /* Info.plist */,
-				635A498024042749000A06A6 /* Daily_Cat_Facts.xcdatamodeld */,
 			);
 			path = "Daily Cat Facts";
 			sourceTree = "<group>";
@@ -141,6 +140,7 @@
 		635A49AA2404287C000A06A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				635A498024042749000A06A6 /* Daily_Cat_Facts.xcdatamodeld */,
 				635A49AB24042891000A06A6 /* CatFactManager.swift */,
 				635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */,
 			);
