@@ -17,6 +17,7 @@
 		635A499D2404274B000A06A6 /* Daily_Cat_FactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A499C2404274B000A06A6 /* Daily_Cat_FactsUITests.swift */; };
 		635A49AC24042891000A06A6 /* CatFactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A49AB24042891000A06A6 /* CatFactManager.swift */; };
 		635A49AE240428F5000A06A6 /* CatFactResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */; };
+		63B64F212611F0BD008C61DB /* Data+Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B64F202611F0BD008C61DB /* Data+Decoding.swift */; };
 		63EBFEB824050CA600D35F50 /* CatFactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFEB724050CA600D35F50 /* CatFactListViewController.swift */; };
 		63EBFEBC24053FC900D35F50 /* FactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EBFEBB24053FC900D35F50 /* FactTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		635A499E2404274B000A06A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		635A49AB24042891000A06A6 /* CatFactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactManager.swift; sourceTree = "<group>"; };
 		635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactResponseModel.swift; sourceTree = "<group>"; };
+		63B64F202611F0BD008C61DB /* Data+Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Decoding.swift"; sourceTree = "<group>"; };
 		63EBFEB724050CA600D35F50 /* CatFactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactListViewController.swift; sourceTree = "<group>"; };
 		63EBFEBB24053FC900D35F50 /* FactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 		635A497624042749000A06A6 /* Daily Cat Facts */ = {
 			isa = PBXGroup;
 			children = (
+				63B64F1F2611EFBD008C61DB /* Extension */,
 				63EBFEC624054C5800D35F50 /* ViewController */,
 				63EBFEC524054C4300D35F50 /* View */,
 				635A49AA2404287C000A06A6 /* Model */,
@@ -145,6 +148,14 @@
 				635A49AD240428F5000A06A6 /* CatFactResponseModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63B64F1F2611EFBD008C61DB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				63B64F202611F0BD008C61DB /* Data+Decoding.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		63EBFEC524054C4300D35F50 /* View */ = {
@@ -295,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B64F212611F0BD008C61DB /* Data+Decoding.swift in Sources */,
 				635A49AE240428F5000A06A6 /* CatFactResponseModel.swift in Sources */,
 				63EBFEB824050CA600D35F50 /* CatFactListViewController.swift in Sources */,
 				635A497824042749000A06A6 /* AppDelegate.swift in Sources */,

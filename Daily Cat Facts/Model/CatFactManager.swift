@@ -20,28 +20,16 @@ class CatFactManager {
         if let url = URL(string: catFactURL) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
+                guard let data = data,
+                      let catFacts: [CatFactResponseModel] = try? data.decoded() else {
+                    if let error = error {
+                        print(error)
+                    }
                     return
                 }
-                if let response = data {
-                    if let catFacts = self.parseJSON(response) {
-                        self.delegate?.saveCatFacts(self, catFacts: catFacts)
-                    }
-                }
+                self.delegate?.saveCatFacts(self, catFacts: catFacts)
             }
             task.resume()
-        }
-    }
-
-    func parseJSON(_ catFactData: Data) -> [CatFactResponseModel]? {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode([CatFactResponseModel].self, from: catFactData)
-            return decodedData
-        } catch {
-            print(error)
-            return nil
         }
     }
 }
