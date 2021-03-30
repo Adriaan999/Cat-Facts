@@ -8,43 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cat Fact List View Controller-->
+        <!--Cat Facts-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CatFactListViewController" customModule="Daily_Cat_Facts" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vCS-ZM-4eZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vCS-ZM-4eZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="factCell" id="35k-Ue-MzG" customClass="FactTableViewCell" customModule="Daily_Cat_Facts" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="42.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="35k-Ue-MzG" id="vjK-vo-vR3">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="factLabel" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9D-nC-ytU">
-                                            <rect key="frame" x="28" y="11" width="358" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="g9D-nC-ytU" secondAttribute="bottom" id="PtG-bZ-3MT"/>
-                                        <constraint firstItem="g9D-nC-ytU" firstAttribute="top" secondItem="vjK-vo-vR3" secondAttribute="topMargin" id="gIu-i1-Syl"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="g9D-nC-ytU" secondAttribute="trailing" constant="8" id="vi5-z4-plw"/>
-                                        <constraint firstItem="g9D-nC-ytU" firstAttribute="leading" secondItem="vjK-vo-vR3" secondAttribute="leadingMargin" constant="8" id="y71-It-lo7"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="factLabel" destination="g9D-nC-ytU" id="F5X-te-jFb"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="i94-5k-7Vx"/>
+                    <navigationItem key="navigationItem" title="Cat Facts" id="i94-5k-7Vx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

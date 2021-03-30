@@ -18,9 +18,9 @@ class CatFactListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableViewCell()
         self.startLoadindAnimation()
         viewModel.loadFacts()
-        self.navigationController?.navigationBar.topItem?.title = "Cat Facts"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,9 +28,10 @@ class CatFactListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "factCell", for: indexPath) as! FactTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FactTableViewCell", for: indexPath) as! FactTableViewCell
         if let item = viewModel.factDB[indexPath.row].fact {
-            cell.factLabel?.text = "Fact \(indexPath.row + 1): \(item)"
+            cell.factLabelTitle.text = "Fact \(indexPath.row + 1):"
+            cell.factLabelBody?.text = item
         }
         return cell
     }
@@ -41,6 +42,11 @@ class CatFactListViewController: UITableViewController {
         activityIndicator.style = .large
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+    }
+    
+    private func setupTableViewCell() {
+        self.tableView.register(UINib(nibName: "FactTableViewCell", bundle: Bundle.main),
+                                forCellReuseIdentifier: "FactTableViewCell")
     }
 }
 
